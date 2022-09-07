@@ -104,7 +104,13 @@
 <h2 id="Run-server-locally"><a href="#Run-server-locally" class="headerlink" title="Run server locally"></a>Run server locally</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cmd</span></span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
 <p>The server runs at the port 4000 by default. Use web driver to view the webpage with url <strong><a target="_blank" rel="noopener" href="http://127.0.0.1:4000/">http://127.0.0.1:4000/</a></strong>.</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+<h2 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cmd</span></span><br><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>This step is just like git add and git commit on the local side.</p>
+<h2 id="Deploy-the-local-data-to-GitHub"><a href="#Deploy-the-local-data-to-GitHub" class="headerlink" title="Deploy the local data to GitHub"></a>Deploy the local data to GitHub</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cmd</span></span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>This step is just like git push, which will push the committed local data to GitHub.<br>After <code>hexo deploy</code>, sometimes the cache data will exist for a while so that the global webpage (https:&#x2F;&#x2F;<github accout>.github.io) may maintain the same appearance until the cache expires. </p>
+
       
     </div>
     <footer class="article-footer">
