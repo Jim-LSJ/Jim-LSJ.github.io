@@ -30,7 +30,114 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(/images/background.jpg) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Jim's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2022/12/03/argparse/">argparse</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-12-03</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-12-03</span></span></div></header><div class="post-body"><div class="post-excerpt">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(/images/background.jpg) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Jim's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/15/Git/">Git</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-15</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-15</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h6 id="tags-tool"   >
+          <a href="#tags-tool" class="heading-link"><i class="fas fa-link"></i></a><a href="#tags-tool" class="headerlink" title="tags: tool"></a>tags: <code>tool</code></h6>
+      <p><img src="/../images/git_workflow.png"></p>
+
+        <h1 id="Introduction"   >
+          <a href="#Introduction" class="heading-link"><i class="fas fa-link"></i></a><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1>
+      <p>Git 是版本管控的工具，主要用途有：</p>
+<ul>
+<li><strong>Code hosting</strong>: Git allows you to host your code on a remote server, making it easy for multiple people to collaborate on development.</li>
+<li><strong>Version control</strong>: Git tracks every change made to files, allowing you to revert back to previous versions if necessary.</li>
+<li><strong>Branch management</strong>: Git supports branch management, allowing you to work on different branches in parallel and then merge them back into the main branch.</li>
+</ul>
+<p>使用情境為<strong>多人開發同一個專案</strong>：</p>
+<ul>
+<li><strong>Code hosting</strong> 提供 Remote 端存放 code，便於專案的多人開發，同時Remote 端也有 <strong>Version control</strong> 與 <strong>Branch management</strong> 的功能</li>
+<li>大型專案在開發過程會有許多版本，若當前版本壞掉，需要使用先前較穩定的版本時，<strong>Version control</strong> 能方便管理</li>
+<li>每個人開發的功能不同或是一次開發多種功能時，<strong>Branch management</strong> 能避免不同功能的code在開發時互相影響</li>
+</ul>
+
+        <h2 id="Workspace-x2F-Local-Repository-x2F-Remote-Repository"   >
+          <a href="#Workspace-x2F-Local-Repository-x2F-Remote-Repository" class="heading-link"><i class="fas fa-link"></i></a><a href="#Workspace-x2F-Local-Repository-x2F-Remote-Repository" class="headerlink" title="Workspace &#x2F; Local Repository &#x2F; Remote Repository"></a>Workspace &#x2F; Local Repository &#x2F; Remote Repository</h2>
+      <p>簡單來說，Git 的存放空間有 workspace, local repository, remote repository 三部分。</p>
+<p>workspace 和 local repository 都在 local 端，會共用同個資料夾，差別在於 workspace 是還沒 commit 成<strong>版本</strong>的檔案，而 local repository 是<strong>有版本紀錄</strong>的檔案</p>
+<p>Repository 是被 Git 管理的空間，local repository 存放於使用者電腦中，透過 .git 檔管理的資料夾；global repository 則是存放於雲端(GitHub)上，能使用不同電腦透過網路進行存取。</p>
+
+        <h1 id="command"   >
+          <a href="#command" class="heading-link"><i class="fas fa-link"></i></a><a href="#command" class="headerlink" title="command"></a>command</h1>
+      
+        <h2 id="change-files-within-local"   >
+          <a href="#change-files-within-local" class="heading-link"><i class="fas fa-link"></i></a><a href="#change-files-within-local" class="headerlink" title="change files within local"></a>change files within local</h2>
+      <ul>
+<li><strong>git init</strong><ul>
+<li>first time to initialize git (add .git file to the target folder)</li>
+</ul>
+</li>
+<li><strong>git add {file_name}</strong><ul>
+<li>“git add .” stand for adding all the files</li>
+</ul>
+</li>
+<li><strong>git commit -m</strong> “comment of revise”<ul>
+<li>control the version of the added files with the <strong>local repository</strong></li>
+</ul>
+</li>
+<li><strong>git commit -am</strong> “comment of revise”<ul>
+<li>-am stand for add + commit</li>
+</ul>
+</li>
+</ul>
+
+        <h2 id="version-x2F-branch-switch"   >
+          <a href="#version-x2F-branch-switch" class="heading-link"><i class="fas fa-link"></i></a><a href="#version-x2F-branch-switch" class="headerlink" title="version &#x2F; branch switch"></a>version &#x2F; branch switch</h2>
+      <ul>
+<li><strong>git log</strong><ul>
+<li>log the version change of the <strong>local repository</strong></li>
+</ul>
+</li>
+<li><strong>git reset –hard</strong> {hashcode on log}<ul>
+<li>reset to the version with the hashcode</li>
+</ul>
+</li>
+<li><strong>git checkout</strong> {hashcode&#x2F;branch&#x2F;HEAD}<ul>
+<li>switch to previous version, branch, or current version <strong>(HEAD)</strong></li>
+</ul>
+</li>
+</ul>
+
+        <h2 id="change-files-with-github"   >
+          <a href="#change-files-with-github" class="heading-link"><i class="fas fa-link"></i></a><a href="#change-files-with-github" class="headerlink" title="change files with github"></a>change files with github</h2>
+      <ul>
+<li><strong>git clone</strong><ul>
+<li>first time to get the <strong>remote repository</strong> on github</li>
+</ul>
+</li>
+<li><strong>git push</strong><ul>
+<li>push the local repository to the github</li>
+</ul>
+</li>
+<li><strong>git pull</strong><ul>
+<li>pull the repository from github to <strong>local repository</strong> and <strong>workspace</strong></li>
+</ul>
+</li>
+<li><strong>git fetch</strong><ul>
+<li>pull the repository from github to <strong>local repository</strong></li>
+</ul>
+</li>
+<li><strong>git merge</strong><ul>
+<li>merge the <strong>local repository</strong> and <strong>workspace</strong></li>
+</ul>
+</li>
+</ul>
+
+        <h3 id="to-upload-file-to-github"   >
+          <a href="#to-upload-file-to-github" class="heading-link"><i class="fas fa-link"></i></a><a href="#to-upload-file-to-github" class="headerlink" title="to upload file to github"></a>to upload file to github</h3>
+      <ol>
+<li>pull (fetch+merge) files to get the latest version on github</li>
+<li>add and commit to control the version with the files we just pull down</li>
+<li>push files to github</li>
+</ol>
+
+        <h3 id="to-download-file-from-github"   >
+          <a href="#to-download-file-from-github" class="heading-link"><i class="fas fa-link"></i></a><a href="#to-download-file-from-github" class="headerlink" title="to download file from github"></a>to download file from github</h3>
+      <ol>
+<li>pull files</li>
+<li>git add and commit to control the version</li>
+</ol>
+<hr>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2022/12/03/argparse/">argparse</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-12-03</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-12-03</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h2 id="argparse-ArgumentParser"   >
           <a href="#argparse-ArgumentParser" class="heading-link"><i class="fas fa-link"></i></a><a href="#argparse-ArgumentParser" class="headerlink" title="argparse.ArgumentParser()"></a>argparse.ArgumentParser()</h2>
       
@@ -106,4 +213,4 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.2.0"></he
       <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cmd</span></span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></div></figure>
 
 <p>This step is just like git push, which will push the committed local data to GitHub.<br>After <code>hexo deploy</code>, sometimes the cache data will exist for a while so that the global webpage (https:&#x2F;&#x2F;<github accout>.github.io) may maintain the same appearance until the cache expires. </p>
-</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jim Shih-Chun Lin</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.2.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.7.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.7.0"></script><script src="/js/stun-boot.js?v=2.7.0"></script><script src="/js/scroll.js?v=2.7.0"></script><script src="/js/header.js?v=2.7.0"></script><script src="/js/sidebar.js?v=2.7.0"></script></body></html>
+</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jim Shih-Chun Lin</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.2.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.7.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.7.0"></script><script src="/js/stun-boot.js?v=2.7.0"></script><script src="/js/scroll.js?v=2.7.0"></script><script src="/js/header.js?v=2.7.0"></script><script src="/js/sidebar.js?v=2.7.0"></script></body></html>

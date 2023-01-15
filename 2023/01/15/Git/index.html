@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.7.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.7.0" type="image/png" sizes="32x32"><meta name="description" content="tags: tool                            Introduction       Git 是版本管控的工具，主要用途有：  Code hosting: Git allows you to host your code on a remote server, making it easy for multiple people">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git">
+<meta property="og:url" content="http://jim-lsj.github.io/2023/01/15/Git/index.html">
+<meta property="og:site_name" content="Jim&#39;s Blog">
+<meta property="og:description" content="tags: tool                            Introduction       Git 是版本管控的工具，主要用途有：  Code hosting: Git allows you to host your code on a remote server, making it easy for multiple people">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://jim-lsj.github.io/images/git_workflow.png">
+<meta property="article:published_time" content="2023-01-15T10:48:00.000Z">
+<meta property="article:modified_time" content="2023-01-15T10:50:56.858Z">
+<meta property="article:author" content="Jim Shih-Chun Lin">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jim-lsj.github.io/images/git_workflow.png"><title>Git | Jim's Blog</title><link ref="canonical" href="http://jim-lsj.github.io/2023/01/15/Git/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.7.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(/images/background.jpg) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Jim's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Git</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-15</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-15</span></span></div></header><div class="post-body">
+        <h6 id="tags-tool"   >
+          <a href="#tags-tool" class="heading-link"><i class="fas fa-link"></i></a><a href="#tags-tool" class="headerlink" title="tags: tool"></a>tags: <code>tool</code></h6>
+      <p><img src="/../images/git_workflow.png"></p>
+
+        <h1 id="Introduction"   >
+          <a href="#Introduction" class="heading-link"><i class="fas fa-link"></i></a><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1>
+      <p>Git 是版本管控的工具，主要用途有：</p>
+<ul>
+<li><strong>Code hosting</strong>: Git allows you to host your code on a remote server, making it easy for multiple people to collaborate on development.</li>
+<li><strong>Version control</strong>: Git tracks every change made to files, allowing you to revert back to previous versions if necessary.</li>
+<li><strong>Branch management</strong>: Git supports branch management, allowing you to work on different branches in parallel and then merge them back into the main branch.</li>
+</ul>
+<p>使用情境為<strong>多人開發同一個專案</strong>：</p>
+<ul>
+<li><strong>Code hosting</strong> 提供 Remote 端存放 code，便於專案的多人開發，同時Remote 端也有 <strong>Version control</strong> 與 <strong>Branch management</strong> 的功能</li>
+<li>大型專案在開發過程會有許多版本，若當前版本壞掉，需要使用先前較穩定的版本時，<strong>Version control</strong> 能方便管理</li>
+<li>每個人開發的功能不同或是一次開發多種功能時，<strong>Branch management</strong> 能避免不同功能的code在開發時互相影響</li>
+</ul>
+
+        <h2 id="Workspace-x2F-Local-Repository-x2F-Remote-Repository"   >
+          <a href="#Workspace-x2F-Local-Repository-x2F-Remote-Repository" class="heading-link"><i class="fas fa-link"></i></a><a href="#Workspace-x2F-Local-Repository-x2F-Remote-Repository" class="headerlink" title="Workspace &#x2F; Local Repository &#x2F; Remote Repository"></a>Workspace &#x2F; Local Repository &#x2F; Remote Repository</h2>
+      <p>簡單來說，Git 的存放空間有 workspace, local repository, remote repository 三部分。</p>
+<p>workspace 和 local repository 都在 local 端，會共用同個資料夾，差別在於 workspace 是還沒 commit 成<strong>版本</strong>的檔案，而 local repository 是<strong>有版本紀錄</strong>的檔案</p>
+<p>Repository 是被 Git 管理的空間，local repository 存放於使用者電腦中，透過 .git 檔管理的資料夾；global repository 則是存放於雲端(GitHub)上，能使用不同電腦透過網路進行存取。</p>
+
+        <h1 id="command"   >
+          <a href="#command" class="heading-link"><i class="fas fa-link"></i></a><a href="#command" class="headerlink" title="command"></a>command</h1>
+      
+        <h2 id="change-files-within-local"   >
+          <a href="#change-files-within-local" class="heading-link"><i class="fas fa-link"></i></a><a href="#change-files-within-local" class="headerlink" title="change files within local"></a>change files within local</h2>
+      <ul>
+<li><strong>git init</strong><ul>
+<li>first time to initialize git (add .git file to the target folder)</li>
+</ul>
+</li>
+<li><strong>git add {file_name}</strong><ul>
+<li>“git add .” stand for adding all the files</li>
+</ul>
+</li>
+<li><strong>git commit -m</strong> “comment of revise”<ul>
+<li>control the version of the added files with the <strong>local repository</strong></li>
+</ul>
+</li>
+<li><strong>git commit -am</strong> “comment of revise”<ul>
+<li>-am stand for add + commit</li>
+</ul>
+</li>
+</ul>
+
+        <h2 id="version-x2F-branch-switch"   >
+          <a href="#version-x2F-branch-switch" class="heading-link"><i class="fas fa-link"></i></a><a href="#version-x2F-branch-switch" class="headerlink" title="version &#x2F; branch switch"></a>version &#x2F; branch switch</h2>
+      <ul>
+<li><strong>git log</strong><ul>
+<li>log the version change of the <strong>local repository</strong></li>
+</ul>
+</li>
+<li><strong>git reset –hard</strong> {hashcode on log}<ul>
+<li>reset to the version with the hashcode</li>
+</ul>
+</li>
+<li><strong>git checkout</strong> {hashcode&#x2F;branch&#x2F;HEAD}<ul>
+<li>switch to previous version, branch, or current version <strong>(HEAD)</strong></li>
+</ul>
+</li>
+</ul>
+
+        <h2 id="change-files-with-github"   >
+          <a href="#change-files-with-github" class="heading-link"><i class="fas fa-link"></i></a><a href="#change-files-with-github" class="headerlink" title="change files with github"></a>change files with github</h2>
+      <ul>
+<li><strong>git clone</strong><ul>
+<li>first time to get the <strong>remote repository</strong> on github</li>
+</ul>
+</li>
+<li><strong>git push</strong><ul>
+<li>push the local repository to the github</li>
+</ul>
+</li>
+<li><strong>git pull</strong><ul>
+<li>pull the repository from github to <strong>local repository</strong> and <strong>workspace</strong></li>
+</ul>
+</li>
+<li><strong>git fetch</strong><ul>
+<li>pull the repository from github to <strong>local repository</strong></li>
+</ul>
+</li>
+<li><strong>git merge</strong><ul>
+<li>merge the <strong>local repository</strong> and <strong>workspace</strong></li>
+</ul>
+</li>
+</ul>
+
+        <h3 id="to-upload-file-to-github"   >
+          <a href="#to-upload-file-to-github" class="heading-link"><i class="fas fa-link"></i></a><a href="#to-upload-file-to-github" class="headerlink" title="to upload file to github"></a>to upload file to github</h3>
+      <ol>
+<li>pull (fetch+merge) files to get the latest version on github</li>
+<li>add and commit to control the version with the files we just pull down</li>
+<li>push files to github</li>
+</ol>
+
+        <h3 id="to-download-file-from-github"   >
+          <a href="#to-download-file-from-github" class="heading-link"><i class="fas fa-link"></i></a><a href="#to-download-file-from-github" class="headerlink" title="to download file from github"></a>to download file from github</h3>
+      <ol>
+<li>pull files</li>
+<li>git add and commit to control the version</li>
+</ol>
+<hr>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://jim-lsj.github.io">Jim Shih-Chun Lin</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://jim-lsj.github.io/2023/01/15/Git/">http://jim-lsj.github.io/2023/01/15/Git/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://jim-lsj.github.io/tags/Git/">Git</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2022/12/03/argparse/"><span class="paginator-prev__text">argparse</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#tags-tool"><span class="toc-number">1.</span> <span class="toc-text">
+          tags: tool</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number"></span> <span class="toc-text">
+          Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Workspace-x2F-Local-Repository-x2F-Remote-Repository"><span class="toc-number"></span> <span class="toc-text">
+          Workspace &#x2F; Local Repository &#x2F; Remote Repository</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#command"><span class="toc-number"></span> <span class="toc-text">
+          command</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#change-files-within-local"><span class="toc-number"></span> <span class="toc-text">
+          change files within local</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#version-x2F-branch-switch"><span class="toc-number"></span> <span class="toc-text">
+          version &#x2F; branch switch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#change-files-with-github"><span class="toc-number"></span> <span class="toc-text">
+          change files with github</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#to-upload-file-to-github"><span class="toc-number"></span> <span class="toc-text">
+          to upload file to github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#to-download-file-from-github"><span class="toc-number"></span> <span class="toc-text">
+          to download file from github</span></a></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jim Shih-Chun Lin</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.2.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.7.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.7.0"></script><script src="/js/stun-boot.js?v=2.7.0"></script><script src="/js/scroll.js?v=2.7.0"></script><script src="/js/header.js?v=2.7.0"></script><script src="/js/sidebar.js?v=2.7.0"></script></body></html>
